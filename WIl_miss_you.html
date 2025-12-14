@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Until You’re Back ❤️</title>
+  <style>
+    :root{
+      --bg1:#7f7cff;
+      --bg2:#c9c8ff;
+    }
+    html,body{
+      height:100%;margin:0;padding:0;
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:linear-gradient(135deg,var(--bg1),var(--bg2));
+      overflow:hidden;
+    }
+    .center{
+      height:100vh;display:flex;flex-direction:column;
+      justify-content:center;align-items:center;text-align:center;
+      padding:22px;box-sizing:border-box;color:#fff;
+    }
+    h1{
+      font-size:2.4rem;margin:10px 0 6px;
+      text-shadow:0 6px 18px rgba(0,0,0,.25);
+    }
+    #typed{
+      max-width:760px;font-size:1.15rem;line-height:1.55;
+      min-height:120px;opacity:.95;
+    }
+    .note{
+      margin-top:14px;font-size:.9rem;opacity:.85;
+    }
+    .star{
+      position:fixed;font-size:18px;pointer-events:none;
+      text-shadow:0 4px 10px rgba(0,0,0,.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+    <svg width="88" height="88" viewBox="0 0 24 24" fill="none">
+      <path d="M12 21s-7.5-4.873-9.333-8.083C-1 4.667 7.667 1 12 7.333 16.333 1 25 4.667 21.333 12.917 19.5 16.127 12 21 12 21z" fill="#ffffff" opacity=".95"/>
+    </svg>
+    <h1>Hey my love 🤍</h1>
+    <div id="typed"></div>
+    <div class="note">Every star you see tonight — that’s me thinking of you ✨</div>
+  </div>
+
+<script>
+const message = "I know you’re leaving for a little while, and even though it’s just a month, it already feels strange imagining days without seeing you.<br><br>But I want you to know something important — distance doesn’t scare me when it’s you. Not even a little.<br><br>Wherever you go, whatever you do, a part of my heart is traveling with you. I’ll be cheering for you quietly, missing you loudly, and counting the days until I get to see you again.<br><br>This month is just a small chapter. We’re the whole story. And I promise — I’m not going anywhere. 💫";
+
+(function typeHTML(id, html, delay=38){
+  const el=document.getElementById(id);
+  const parts=html.split(/(<[^>]+>)/g).filter(Boolean);
+  let i=0;
+  function next(){
+    if(i>=parts.length) return;
+    const p=parts[i++];
+    if(p.startsWith('<')){ el.innerHTML+=p; next(); }
+    else{
+      let j=0;
+      (function t(){ if(j<p.length){ el.innerHTML+=p[j++]; setTimeout(t,delay);} else next(); })();
+    }
+  }
+  next();
+})("typed",message);
+
+function rand(a,b){return Math.random()*(b-a)+a;}
+function star(){
+  const s=document.createElement('div');
+  s.className='star';
+  s.textContent=['✨','⭐','💫'][Math.floor(Math.random()*3)];
+  s.style.left=rand(5,95)+'vw';
+  s.style.top=rand(10,90)+'vh';
+  document.body.appendChild(s);
+  s.animate([
+    {opacity:0,transform:'scale(.6)'},
+    {opacity:1,transform:'scale(1.1)'},
+    {opacity:0,transform:'scale(.4)'}
+  ],{duration:2600,easing:'ease-in-out'});
+  setTimeout(()=>s.remove(),2600);
+}
+setInterval(star,700);
+</script>
+
+<!--
+If you opened the code, here’s the real message:
+No matter the distance, you’re my home.
+Come back safely. I’ll be right here.
+-->
+</body>
+</html>
